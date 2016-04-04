@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pandawork.mapper.WeeklyMatchMapper">
+    <select id="listAllOpp" resultType="int">
+        SELECT opponent_id
+        FROM t_weekly_match
+        WHERE user_id = #{userId}
+    </select>
+
+    <delete id="delAll">
+        DELETE
+        FROM t_weekly_match
+    </delete>
+
+    <insert id="newMatch">
+        INSERT INTO t_weekly_match (user_id,opponent_id)
+        VALUES (#{userId},#{oppId})
+    </insert>
+
+    <select id="listRandId" resultType="int">
+        SELECT id
+        FROM t_user
+        ORDER BY RAND()
+        LIMIT #{num}
+    </select>
+
+    <select id="queryOppIdOrderByPoint" resultType="int">
+        SELECT twm.opponent_id
+        FROM t_weekly_match twm LEFT JOIN t_user tu
+        ON twm.opponent_id = tu.id
+        WHERE twm.user_id = #{userId}
+        ORDER BY tu.week_point DESC
+    </select>
+</mapper>
