@@ -29,5 +29,11 @@
         WHERE id = #{id}
     </delete>
 
+    <select id="queryThingsByType" resultMap="pw.Thing">
+        SELECT *
+        FROM t_thing
+        WHERE user_id = #{userId}
+        AND type = #{type}
+    </select>
 
 </mapper>

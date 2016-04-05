@@ -13,7 +13,7 @@
     <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
         <property name="username" value="root"/>
         <property name="password" value="mysql"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/student?defaultFetchSize=25&amp;useLocalSessionState=true&amp;elideSetAutoCommit=true&amp;useUsageAdvisor=false&amp;useReadAheadInput=false&amp;useUnbufferedInput=false&amp;cacheServerConfiguration=true&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull" />
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/db_time_manager?defaultFetchSize=25&amp;useLocalSessionState=true&amp;elideSetAutoCommit=true&amp;useUsageAdvisor=false&amp;useReadAheadInput=false&amp;useUnbufferedInput=false&amp;cacheServerConfiguration=true&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8" />
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
         <property name="idleConnectionTestPeriod" value="60"/>
         <property name="idleMaxAge" value="240"/>

@@ -41,11 +41,13 @@ public class LoginController extends AbstractController {
                 session.setAttribute("user", user);
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("code",0);//成功登录
+                jsonObject.put("userId",user.getId());
 
                 return jsonObject;
             }else {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("code",1);//用户名密码错误
+                jsonObject.put("userId",-1);
                 return jsonObject;
             }
 
@@ -53,6 +55,7 @@ public class LoginController extends AbstractController {
             LogClerk.errLog.error(e);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("code",2);//系统内部错误
+            jsonObject.put("userId",-1);
             return jsonObject;
         }
     }
