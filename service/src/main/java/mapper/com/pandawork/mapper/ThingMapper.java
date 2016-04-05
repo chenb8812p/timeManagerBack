@@ -39,4 +39,14 @@ public interface ThingMapper {
      */
     public void delThing(int id) throws Exception;
 
+    /**
+     * 根据type获取Thing的List
+     * @param userId
+     * @param type
+     * @return
+     * @throws Exception
+     */
+    public List<Thing> queryThingsByType(@Param("userId")int userId,
+                                         @Param("type")int type) throws Exception;
+
 }

@@ -7,6 +7,7 @@ import com.pandawork.core.common.log.LogClerk;
 import com.pandawork.core.common.util.Assert;
 import com.pandawork.mapper.ThingMapper;
 import com.pandawork.service.ThingService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -60,6 +61,16 @@ public class ThingServiceImpl implements ThingService {
     public void delThing(int id) throws SSException {
         try {
             thingMapper.delThing(id);
+        } catch (Exception e) {
+            LogClerk.errLog.error(e);
+            throw SSException.get(NFException.SystemException, e);
+        }
+    }
+
+    @Override
+    public List<Thing> queryThingsByType(@Param("userId") int userId, @Param("type") int type) throws SSException {
+        try {
+            return thingMapper.queryThingsByType(userId,type);
         } catch (Exception e) {
             LogClerk.errLog.error(e);
             throw SSException.get(NFException.SystemException, e);

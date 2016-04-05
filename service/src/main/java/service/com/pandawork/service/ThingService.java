@@ -2,6 +2,7 @@ package com.pandawork.service;
 
 import com.pandawork.common.entity.Thing;
 import com.pandawork.core.common.exception.SSException;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -37,4 +38,15 @@ public interface ThingService {
      * @throws SSException
      */
     public void delThing(int id) throws SSException;
+
+
+    /**
+     * 根据type获取Thing的List
+     * @param userId
+     * @param type
+     * @return
+     * @throws SSException
+     */
+    public List<Thing> queryThingsByType(@Param("userId")int userId,
+                                         @Param("type")int type) throws SSException;
 }

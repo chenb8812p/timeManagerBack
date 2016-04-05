@@ -62,4 +62,9 @@ public class ThingServiceTest extends AbstractTestCase {
         }
     }
 
+    @Test
+    public void testQueryThingsByType() throws SSException {
+        thingService.queryThingsByType(1,1);
+    }
+
 }
