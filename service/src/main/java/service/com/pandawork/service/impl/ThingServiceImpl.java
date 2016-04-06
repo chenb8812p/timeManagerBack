@@ -46,15 +46,23 @@ public class ThingServiceImpl implements ThingService {
             if (DateDiff.getDays(thing.getEndTime(),thing.getStartTime()) == 0){
                 thingMapper.newThing(thing);
             }else{
-                Thing thing1 = thing;
-                Thing thing2 = thing;
-                String endTime = df.format(thing1.getStartTime());
-                String startTime = df.format(thing2.getEndTime());
+                Thing thing1 = new Thing();
+
+                Thing thing2 = new Thing();
+
+                String endTime = df.format(thing.getStartTime());
+                String startTime = df.format(thing.getEndTime());
                 df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 thing1.setEndTime(df.parse(endTime+" 23:59:59"));
+                thing1.setStartTime(thing.getStartTime());
                 thing2.setStartTime(df.parse(startTime+" 00:00:00"));
-                thingMapper.newThing(thing1);
-                thingMapper.newThing(thing2);
+                thing2.setEndTime(thing.getEndTime());
+                thing.setStartTime(thing1.getStartTime());
+                thing.setEndTime(thing1.getEndTime());
+                thingMapper.newThing(thing);
+                thing.setEndTime(thing2.getEndTime());
+                thing.setStartTime(thing2.getStartTime());
+                thingMapper.newThing(thing);
             }
 
         } catch (Exception e) {

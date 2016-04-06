@@ -6,6 +6,9 @@ import com.pandawork.service.ThingService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,14 +34,21 @@ public class ThingServiceTest extends AbstractTestCase {
 
     @Test
     public void testNewThing() {
-        Thing thing = new Thing();
-        thing.setName("aaa");
-        thing.setType(1);
-        thing.setUserId(1);
-        thing.setStartTime(new Date());
-        thing.setEndTime(new Date());
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        Date d2 = null;
         try {
+            d2 = df.parse("2004-01-2 07:30:40");
+            Date d1 = df.parse("2004-01-01 23:30:24");
+            Thing thing = new Thing();
+            thing.setName("aaa");
+            thing.setType(1);
+            thing.setUserId(1);
+            thing.setStartTime(d1);
+            thing.setEndTime(d2);
             thingService.newThing(thing);
+        } catch (ParseException e) {
+            e.printStackTrace();
         } catch (SSException e) {
             e.printStackTrace();
         }
