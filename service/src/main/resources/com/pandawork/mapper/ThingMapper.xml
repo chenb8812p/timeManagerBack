@@ -8,6 +8,10 @@
         SELECT *
         FROM t_thing
         WHERE user_id = #{userId}
+        AND DATE(start_time) = CURDATE()
+        OR DATE(start_time) = DATE_ADD(CURDATE(),INTERVAL 1 DAY)
+        OR DATE(start_time) = DATE_SUB(CURDATE(),INTERVAL 1 DAY)
+        ORDER BY start_time
     </select>
 
     <insert id="newThing">

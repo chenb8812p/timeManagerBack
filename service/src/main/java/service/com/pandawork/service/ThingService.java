@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface ThingService {
     /**
-     * 生成一天的事情列表
+     * 生成昨天今天明天的事情列表
      * @return
      * @throws SSException
      */

@@ -44,6 +44,7 @@ public class PlanController extends AbstractController {
                 }
 
             }
+            
         } catch (SSException e) {
             e.printStackTrace();
         }
