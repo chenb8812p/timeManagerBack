@@ -77,4 +77,10 @@ public class ThingServiceTest extends AbstractTestCase {
         List<Thing> list = thingService.queryThingsByType(1,1);
     }
 
+    @Test
+    public void queryTodayThingList() throws SSException{
+        List<Thing> list = thingService.queryTodayThingList(1);
+        System.out.println();
+    }
+
 }

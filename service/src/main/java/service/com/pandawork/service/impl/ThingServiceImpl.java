@@ -102,4 +102,14 @@ public class ThingServiceImpl implements ThingService {
             throw SSException.get(NFException.SystemException, e);
         }
     }
+
+    @Override
+    public List<Thing> queryTodayThingList(int userId) throws SSException {
+        try {
+            return thingMapper.queryTodayThingList(userId);
+        } catch (Exception e) {
+            LogClerk.errLog.error(e);
+            throw SSException.get(NFException.SystemException, e);
+        }
+    }
 }

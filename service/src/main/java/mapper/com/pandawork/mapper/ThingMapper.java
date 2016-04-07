@@ -49,4 +49,12 @@ public interface ThingMapper {
     public List<Thing> queryThingsByType(@Param("userId")int userId,
                                          @Param("type")int type) throws Exception;
 
+    /**
+     * 获取当天事情List
+     * @param userId
+     * @return
+     * @throws Exception
+     */
+    public List<Thing> queryTodayThingList(int userId) throws Exception;
+
 }

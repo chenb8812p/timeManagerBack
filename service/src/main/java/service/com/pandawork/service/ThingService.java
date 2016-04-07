@@ -49,4 +49,12 @@ public interface ThingService {
      */
     public List<Thing> queryThingsByType(@Param("userId")int userId,
                                          @Param("type")int type) throws SSException;
+
+    /**
+     * 获取当天事情List
+     * @param userId
+     * @return
+     * @throws SSException
+     */
+    public List<Thing> queryTodayThingList(int userId) throws SSException;
 }

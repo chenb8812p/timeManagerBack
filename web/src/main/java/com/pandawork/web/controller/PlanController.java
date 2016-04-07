@@ -35,6 +35,8 @@ public class PlanController extends AbstractController {
         try {
             List<Thing> thingList = thingService.listThingsByUserId(user.getId());
             Thing thing = new Thing();
+            JSONObject planTimeSList = new JSONObject();
+
             for (int i = 0; i < thingList.size();i++){
                 thing = thingList.get(i);
                 if (thing.getType() == 0){
@@ -46,6 +48,7 @@ public class PlanController extends AbstractController {
                 if (thing.getType() == 2){
                     sleepTime += DateDiff.getDiff(thing.getEndTime(),thing.getStartTime());
                 }
+
 
 
             }
