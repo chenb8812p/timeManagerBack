@@ -33,6 +33,14 @@ public class Thing extends AbstractEntity{
     @Column(name = "user_id")
     private int userId;
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @Column(name = "status")
     private int status;
 
