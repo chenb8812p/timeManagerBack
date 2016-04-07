@@ -20,6 +20,9 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/plan")
 public class PlanController extends AbstractController {
+    public final long totalTime = 86400;
+
+
     @RequestMapping(value = "/ajaxGetPlan", method = RequestMethod.POST)
     public JSONObject ajaxGetPlan(HttpServletRequest request){
         HttpSession session = request.getSession();
@@ -28,6 +31,7 @@ public class PlanController extends AbstractController {
         long studyTime = 0;
         long restTime = 0;
         long sleepTime = 0;
+        long resetTime = 0;
         try {
             List<Thing> thingList = thingService.listThingsByUserId(user.getId());
             Thing thing = new Thing();
@@ -43,8 +47,21 @@ public class PlanController extends AbstractController {
                     sleepTime += DateDiff.getDiff(thing.getEndTime(),thing.getStartTime());
                 }
 
+
             }
-            
+
+            resetTime = totalTime - studyTime - sleepTime - restTime;
+            JSONObject planTimeList = new JSONObject();
+            planTimeList.put("P_study",DateDiff.getBFB(studyTime,totalTime));
+            planTimeList.put("P_rest",DateDiff.getBFB(restTime,totalTime));
+            planTimeList.put("P_sleep",DateDiff.getBFB(sleepTime,totalTime));
+            planTimeList.put("P_reset",DateDiff.getBFB(resetTime,totalTime));
+            jsonObject.put("planTimeList",planTimeList);
+
+
+
+
+
         } catch (SSException e) {
             e.printStackTrace();
         }

@@ -55,7 +55,7 @@ public class ThingServiceImpl implements ThingService {
                 df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 thing1.setEndTime(df.parse(endTime+" 23:59:59"));
                 thing1.setStartTime(thing.getStartTime());
-                thing2.setStartTime(df.parse(startTime+" 00:00:00"));
+                thing2.setStartTime(df.parse(startTime+" 00: 00:00"));
                 thing2.setEndTime(thing.getEndTime());
                 thing.setStartTime(thing1.getStartTime());
                 thing.setEndTime(thing1.getEndTime());

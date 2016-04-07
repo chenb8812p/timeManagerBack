@@ -22,7 +22,7 @@
     <update id="updateThingStatus">
         UPDATE t_thing
         SET status = #{status}
-        where id = #{id}
+        where id = #{ id}
     </update>
 
 
