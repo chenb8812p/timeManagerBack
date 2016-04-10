@@ -24,7 +24,7 @@ public class PlanController extends AbstractController {
     public final long totalTime = 86400;
 
 
-    @RequestMapping(value = "/ajaxGetPlan", method = RequestMethod.POST)
+    @RequestMapping(value = "/ajaxGetPlan", method = RequestMethod.GET)
     public JSONObject ajaxGetPlan(HttpServletRequest request){
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
